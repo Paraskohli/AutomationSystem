@@ -1,0 +1,484 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+  <html lang="en">
+   <head>
+   <%@include file="NavbarMain.jsp" %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+     
+     <script type="text/javascript" src="jquery.min.js.txt"></script>
+     
+     <script type="text/javascript">
+       $(document).ready(function(){
+    	   $("#sslogin").click(dosubitlogs);
+    	   function dosubitlogs(){
+    		   var url=$("#logfs").serialize();
+    		   var serid=document.getElementById("ser_id").value;
+    		   alert(url);
+    		   $.get("ServicePersonPasswordcheck?"+url+"&btn=check",function(data,status){
+    			   var checker=1;
+    			   alert("hiiiiii");
+    			   if(data==checker)
+    				   {
+    				   window.location="servicepersonMain.jsp?serid="+serid;
+    				   }
+    			   else{
+    			   alert(data);
+    			   }
+    		   });
+    	   }
+    	   var sidd;
+    	   $("#sschanepass").click(dochangepass);
+    	   function dochangepass(){
+    		   var url=$("#changes").serialize();
+    		   alert(url);
+    		   sidd=document.getElementById("servid").value;
+    		   alert(sidd);
+    		   $.get("ServicePersonPasswordcheck?"+url+"&btn=check",function(data,status){
+    			   var checker=1;
+    			   if(data==checker)
+    				   {
+    				  // $("#sschanepass").click("data-toggle='modal' data-target=''#newpassword'");
+    				   $('#newpassword').modal('show'); 
+    				  
+    				   }
+    			   else{
+    			   alert(data);
+    			  // $('#changepassword').modal('show');
+    			   }
+    		   });
+    	   }
+    	  
+    	   $("#ssubmit").click(doupdatepass);
+    	   function doupdatepass(){
+    		   var url=$("#sudate").serialize();
+    		   alert(url);
+    		   $.get("ServicePersonPasswordcheck?"+url+"&btn=updatepass&sid="+sidd+"",function(data,status){
+    			   alert(data);
+    		   });
+    	   }
+    	   $("#adminsub").click(doadminsubm);
+    	   function doadminsubm(){
+    		   var url=$("#admfrm").serialize();
+    		   alert(url);
+    		  
+    		   $.get("adminprofiledetail?"+url+"&btn=admincheck",function(data,status){
+    			   var i=1;
+    			   if(i==data)
+    				   {  
+    				     var adid=document.getElementById("adid").value;
+    				    
+    				     window.location="AdminFirstMain.jsp?adid="+adid;
+    				   }
+    			   else{
+    				   alert(data);
+    			   }
+    		   });
+    	   }
+    	   
+       });
+     </script>
+     <style type="text/css">
+          .font{
+           font-size: 24px;
+           margin-top: 8px;
+           }
+          .fonttext{
+             height: 56px;
+             margin-top: 1px;
+             
+             }
+            .box:hover{
+             border:7px  solid #D2CEBF  ;
+             border-radius:10px 10px 10px 10px;
+             transition: all 0s ease;
+            }
+            .box{
+            margin-top: 50px;
+            margin-bottom: 40px;
+            }
+            .hov:hover{
+            text-decoration: none;
+            font-weight: bold;
+            }
+            .abou{
+              margin-top: 100px;
+              background-color: #EFEFEB;
+            }
+            .cli{
+            margin-top: 40px;
+            margin-bottom: 40px;
+            }
+            .cont{
+            background-color:black;
+            background-image:  url('img/logos/mapim.png');
+            
+            }
+            .txtC{
+              font-size:70px;
+              color: white;
+              font-weight: bold;
+              margin-top: 130px
+              
+            }
+            .passw{
+            color: red;
+            }
+            .passw:hover{
+            text-transform: none;
+            }
+     </style>
+     
+  </head>
+  <body >
+<!-- HOME -->
+<div class="row" id="home" >
+<div class="col-md-12"  style="margin-top: 105px; margin-left: 0px;margin-right: 0px; " >
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    </ol>
+   
+       <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active" >
+        <img src="img/a9.jpg" alt="Avoid Pizza" width="100%" height="700px">
+           <div class="carousel-caption" >
+            Pic-1
+           </div>
+      </div>
+      <div class="item">
+        <img src="img/a5.jpg" alt="Say No to Pizza" width="100%" height="700px">
+         <div class="carousel-caption">
+           Pic-2
+         </div>
+      </div>     
+    </div>
+      
+      <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+ </div>
+   
+</div>      
+</div> 
+<!-- SERVICES -->
+  <div class="row" id="service" >
+      <div >
+                <div class="col-lg-12 text-center" style="margin-top: 150px;">
+                    <h1 class="section-heading" style="font-weight: bold; font-size: 44px;">Services</h1>
+                    <h2 class="section-subheading text-muted">What We Do</h2>
+                    <h5 class="text-muted">Our mission is to provide you with quality and Effected service </h5>
+                </div>
+      
+      </div>
+      <div class="row col-md-offset-2"  style="margin-bottom: 110px">
+          <div class="text-center">
+        
+                <div class="col-md-3 box" >
+                 <img src="img/custo.gif" alt="Customer" width="80px" height="80px" style="margin-top: 20px">
+                    <h3 style="color: blue"><a href="" class="hov">Customer</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <a href="CustomerLogin.jsp" class="btn btn-success" role="button" style="width: 100%;margin-bottom: 30px;">Customer SignIn</a>    
+                </div>
+                
+                <div class="col-md-3 box">
+                    <img src="img/serv.jpg" alt="Admin" width="80px" height="80px" style="margin-top: 20px">
+                    <h3  style="color: blue"><a href="" class="hov">Service Person</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                     <a  class="btn btn-danger" role="button" style="width: 100%;margin-bottom: 30px;"data-toggle="modal" data-target="#servicePersonlogin">Service Person SignIn</a> 
+                </div>
+               
+                <div class="col-md-3 box">
+                     <img src="img/admi.png" alt="Admin" width="80px" height="80px" style="margin-top: 20px">
+                    <h3  style="color: blue"><a href="" class="hov">Admin</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                     <a href="#" class="btn btn-primary" role="button" style="width: 100%;margin-bottom: 30px;" data-toggle="modal" data-target="#adminPersonlogin">Admin SignIn</a> 
+                </div>
+          
+          </div>
+      </div>
+   </div>
+   
+   <!-- ABOUT -->
+   <div class="row abou" id="about">
+          <div class="col-lg-12 text-center" style="margin-top: 140px;">
+                    <h1 class="section-heading" style="font-weight: bold; font-size: 48px;">ABOUT</h1>
+                    <h2 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h2>
+          </div>
+          <div class="row col-md-offset-3" style="margin-bottom: 130px;" >
+              <div class="col-md-3" style="margin-top: 100px">
+                <div>
+                <h3 align="right">2009-2011</h3>
+                <h4 class="subheading" align="right">Our Humble Beginnings</h4>
+                </div>
+                <div class="timeline-body " >
+                <p class="text-muted " align="right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                </div> 
+              </div>
+              <div class="col-md-2" style="margin-top: 100px">
+               <img src="img/adminpic.png" alt="adminpic" class="img-thumbnail img-circle" width="200px" height="200px" style="border: solid #B7B7B1;">
+              </div>
+           </div>
+    </div>
+    <!-- Client -->
+    <div class="row cli col-md-offset-1" >
+      <div class="col-md-3">
+        <a href="">
+          <img src="img/logos/envato.jpg"  alt="">
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="">
+          <img src="img/logos/designmodo.jpg"  alt="">
+         </a>
+      </div>
+      <div class="col-md-3">
+         <a href="">
+          <img src="img/logos/themeforest.jpg"  alt="">
+          </a>
+      </div>
+      <div class="col-md-3">
+          <a href="">
+          <img src="img/logos/creative-market.jpg"  alt="">
+          </a>
+      </div>
+    </div>
+    
+    <!--contect  -->
+    <div class="cont" id="contact" >
+     <div class="container" >
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="section-heading txtC">Contact Us</h1>
+                    <h3 class="section-subheading text-muted" >Your Suggestion and Advice is important for us.</h3>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-12">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6" >
+                               
+                                <div class="form-group" >
+                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name."  style="height: 60px" > 
+                                </div>
+                                
+                                <div class="form-group" style="margin-top: 35px" >
+                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address."  style="height: 60px">     
+                                </div>
+                                
+                                <div class="form-group" style="margin-top: 35px" >
+                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number."  style="height: 60px">
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message." style="height: 250px" ></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12 text-center" style="margin-top: 40px;margin-bottom: 80px;">
+                                <button type="submit" style="width: 240px; height: 70px;font-size: 25px ;font-weight: bold;">Send Message</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- nav-bottom -->
+    <nav class="navbar navbar-default navbar-bottom" role="navigation" style="height: 80px; background-color: white;">
+     <div class="container">
+            <div class="row"> 
+                
+                <div class=" navbar-brand col-md-3 col-md-offset-2">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="https://twitter.com/signup/"><img src="img/bott/twit.png" width="50px" height="50px"></img></a>
+                        </li>
+                        <li><a href="http://www.facebook.com"><img src="img/bott/face.png" width="50px" height="50px"></a>
+                        </li>
+                        <li><a href="https://www.linkedin.com/"><img src="img/bott/link.png" width="50px" height="50px"></a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 col-md-offset-2 " >
+                    <span class=" navbar-brand copyright" style="margin: 15px">Copyright &copy; Paras Kohli</span>
+                </div>
+            </div>
+        </div>
+        </nav>
+                
+        <!--Admin login Modal -->
+        
+<div class="modal  " id="adminPersonlogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-success" id="myModalLabel">Admin Login</h4>
+      </div>
+      <div class="modal-body">
+         <!-- form -->
+       <form id="admfrm">
+       <div class="form-group">
+          <label for="adid" class="font text-success">Admin Id</label>
+          <input type="text" class="form-control fonttext" id="adid" placeholder="Admin Id" name="adid">
+       </div>
+       <div class="form-group" style="margin-bottom: 8px;">
+          <label for="exampleInputPassword1" class="font text-success">Password</label>
+          <input type="password" class="form-control fonttext" id="exampleInputPassword1" placeholder="Password" name="adpass">
+       </div>
+       <div class="form-group"  >
+         <label for="exampleInputFile" style="float: right; font-size: 16px;"><a data-toggle="modal"  data-target="#mailcheck"><span  data-dismiss="modal" style="color: red;">Change Password</span></a></label>
+       </div>
+       </form>
+      </div>
+      <div class="modal-footer"style="margin-top: 18px;">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="adminsub">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- mailcheck -->
+  
+  <div class="modal fade" id="mailcheck" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <p>Please Check Your Registered Mail-Id For Re-set The New Password   </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+  
+<!--Service login Modal -->
+<div class="modal  " id="servicePersonlogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-success" id="myModalLabel">Service Person Login</h4>
+      </div>
+      <div class="modal-body">
+         <!-- form -->
+       <form id="logfs">
+       <div class="form-group">
+          <label for="ser_id" class="font text-success">Service Person Id</label>
+          <input type="text" class="form-control fonttext" id="ser_id" placeholder="Service Person Id" name="ser_id">
+       </div>
+       <div class="form-group" style="margin-bottom: 8px;">
+          <label for="exampleInputPassword1" class="font text-success">Password</label>
+          <input type="password" class="form-control fonttext" id="exampleInputPassword1" placeholder="Password" name="ser_pass">
+       </div>
+       <div class="form-group"  >
+         <label for="exampleInputFile" style="float: right; font-size: 16px;"><a data-toggle="modal"  data-target="#changepassword"><span  data-dismiss="modal" style="color: red;">Change Password</span></a></label>
+       </div>
+       </form>
+      </div>
+      <div class="modal-footer"style="margin-top: 18px;">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="sslogin">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- change Password Modal -->
+
+<div class="modal fade" id="changepassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-success" id="myModalLabel">Change Password</h4>
+      </div>
+      <div class="modal-body">
+            <!-- form -->
+       <form id="changes">
+         <div class="form-group">
+          <label for="servid" class="font text-success">Service Person Id</label>
+          <input type="email" class="form-control fonttext" id="servid" placeholder="Service Person Id" name="ser_id" >
+        </div>
+        <div class="form-group" style="margin-bottom: 8px;">
+          <label for="exampleInputPassword1" class="font text-success">Password</label>
+          <input type="password" class="form-control fonttext" id="exampleInputPassword1" placeholder="Password"  name="ser_pass">
+        </div>
+       </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-success"  id="sschanepass" data-dismiss="modal" >Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Password Modal -->
+
+<div class="modal fade" id="newpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-success" id="myModalLabel">Set New Password</h4>
+      </div>
+      <div class="modal-body">
+            <!-- form -->
+       <form id="sudate">
+        
+        <div class="form-group" style="margin-bottom: 8px;">
+          <label for="exampleInputPassword1" class="font text-success">New Password</label>
+          <input type="password" class="form-control fonttext" id="exampleInputPassword1" placeholder="New Password" name="npass">
+        </div>
+        <div class="form-group" style="margin-bottom: 8px;">
+          <label for="exampleInputPassword1" class="font text-success">Re-Password</label>
+          <input type="password" class="form-control fonttext" id="exampleInputPassword2" placeholder="Re-Password" name="repass">
+        </div>
+        
+       </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-success" id="ssubmit">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
+  </body>
+</html>
