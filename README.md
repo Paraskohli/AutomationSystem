@@ -7,4 +7,4 @@ Framework:Bootstrap
 
 Architecture:MVC2
 
-developed by:Paras Kohli
+Developed by:Paras Kohli
